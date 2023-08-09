@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PoNotificationService } from '@po-ui/ng-components';
 import { CstCidadesService } from './cst-cidades.service';
 import { Item } from './item';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-cst-cidades',
@@ -37,6 +38,16 @@ export class CstCidadesComponent implements OnInit {
       this.filtro
     ).subscribe((listaCidades) => {
       this.cidadesList.push(...listaCidades);
+    });
+  }
+
+  filtrarElemento() {
+    this.paginaAtual = 1;
+    this.CstCidadesService.getCidadesList(
+      this.paginaAtual,
+      this.filtro
+    ).subscribe((listaCidades) => {
+      this.cidadesList = listaCidades;
     });
   }
 }

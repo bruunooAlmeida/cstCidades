@@ -1,4 +1,4 @@
-<po-page-default p-title="Lista de Fornecedores">
+<po-page-default p-title="Lista de Cidades">
 
     <po-button
     p-icon="po-icon po-icon-plus-circle"
@@ -9,18 +9,16 @@
     </po-button>
 
     <po-input
-    p-clean="boolean"filtro
+    p-clean="boolean"
     p-placeholder="Informe nome Municipio"
     p-help="Buscar Nome da cidade"
     p-icon="po-icon po-icon-search"
     p-label="Filtro"
-    p-change=updateCidadesList()
-
-    name="filtro"
-
+    (keyup)=filtrarElemento()
+    [ngModel]="filtro"
+    (ngModelChange)="filtro = $event"
+    po-id="filtro"
     > </po-input>
-
-
   <po-table
       p-container="light"
       [p-columns]="colunasTable"
