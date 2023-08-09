@@ -1,0 +1,11 @@
+{
+
+  "items": [
+    { "cidade": "Abadia de Goiás",
+      "estado":"Goiania",
+      "cdnMunpioIbge": 980989 ,
+      "sigla": "GO",
+      "pais": "Brasil"
+    }
+  ]
+}
