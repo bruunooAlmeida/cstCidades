@@ -7,11 +7,13 @@ import { CstCidadesComponent } from './cst-cidades/cst-cidades.component';
 import { PoModule } from '@po-ui/ng-components';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { CstCidadesBotaoComponent } from './cst-cidades/cst-cidades-botao/cst-cidades-botao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CstCidadesComponent
+    CstCidadesComponent,
+    CstCidadesBotaoComponent
   ],
   imports: [
     BrowserModule,

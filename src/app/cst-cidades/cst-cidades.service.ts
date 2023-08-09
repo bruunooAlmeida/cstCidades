@@ -1,5 +1,7 @@
+import { Item } from './item';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
 import { PoTableColumn } from '@po-ui/ng-components';
 import { Observable } from 'rxjs';
 
@@ -14,8 +16,16 @@ export class CstCidadesService {
   constructor(private http: HttpClient) {}
 
   //Método responsável por buscar e listar registros
-  getCidadesList(): Observable<any> {
-    return this.http.get(this.ApiRest);
+  getCidadesList(pagina: number, filtro: string): Observable<Item[]> {
+    const itensPorPagina = 6;
+    let params = new HttpParams()
+      .set('_page', pagina)
+      .set('_limit', itensPorPagina);
+    if (filtro.trim().length > 2) {
+      params = params.set('q', filtro);
+    }
+
+    return this.http.get<Item[]>(this.ApiRest, { params });
   }
 
   //Método para editarmos o nome das colunas de forma mais apresentavel
@@ -23,9 +33,7 @@ export class CstCidadesService {
   getColumns(): Array<PoTableColumn> {
     return [
       { property: 'cidade', label: 'Cidade' },
-      { property: 'estado', label: 'Estado' },
       { property: 'sigla', label: 'sigla' },
-      { property: 'cdnMunpioIbge', label: 'Cód.IBGE' },
       { property: 'pais', label: 'País' },
     ];
   }

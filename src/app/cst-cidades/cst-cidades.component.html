@@ -1,7 +1,31 @@
 <po-page-default p-title="Lista de Fornecedores">
-    <po-table
+
+    <po-button
+    p-icon="po-icon po-icon-plus-circle"
+    p-kind="string"
+    (p-click)="updateCidadesList()"
+    p-label="Carregar mais "
+    p-size="string">
+    </po-button>
+
+    <po-input
+    p-clean="boolean"filtro
+    p-placeholder="Informe nome Municipio"
+    p-help="Buscar Nome da cidade"
+    p-icon="po-icon po-icon-search"
+    p-label="Filtro"
+    p-change=updateCidadesList()
+
+    name="filtro"
+
+    > </po-input>
+
+
+  <po-table
       p-container="light"
       [p-columns]="colunasTable"
       [p-items]="cidadesList">
     </po-table>
+
+
   </po-page-default>
