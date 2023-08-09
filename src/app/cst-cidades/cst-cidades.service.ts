@@ -21,7 +21,7 @@ export class CstCidadesService {
     let params = new HttpParams()
       .set('_page', pagina)
       .set('_limit', itensPorPagina);
-      if (filtro.trim().length > 2) {
+      if (filtro.trim().length > 1) {
         params = params.set('q', filtro);
       }
 
